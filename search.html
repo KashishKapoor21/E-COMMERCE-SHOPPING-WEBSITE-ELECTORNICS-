@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ElectroMart | Search</title>
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #dfe5ff;
+            color: #111;
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 86px;
+
+            padding: 0 6%;
+
+            background: rgb(32, 110, 198);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-top: 3px solid #333;
+        }
+
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: -1px;
+            color: white;
+        }
+
+        .logo span {
+            color: navy;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 42px;
+        }
+
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+
+        .nav-links a:hover {
+            color: navy;
+        }
+
+
+        /* SEARCH + CART */
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+
+        .nav-actions a {
+
+            border: 1px solid rgba(255,255,255,0.4);
+
+            background: transparent;
+
+            color: white;
+
+            padding: 9px 15px;
+
+            font-size: 12px;
+
+            text-decoration: none;
+        }
+
+
+        .nav-actions a:hover {
+
+            background: white;
+
+            color: rgb(32, 110, 198);
+        }
+
+
+        /* =========================
+           SEARCH SECTION
+        ========================= */
+
+        .search-section {
+
+            width: 86%;
+
+            margin: auto;
+
+            min-height: calc(100vh - 86px);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 70px 0;
+        }
+
+
+        .search-box {
+
+            width: 100%;
+
+            max-width: 850px;
+
+            text-align: center;
+        }
+
+
+        .small-heading {
+
+            color: rgb(32, 110, 198);
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .search-box h1 {
+
+            font-size: 62px;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .search-box h1 span {
+
+            color: rgb(32, 110, 198);
+        }
+
+
+        .search-box p {
+
+            color: #555;
+
+            font-size: 16px;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================
+           SEARCH BAR
+        ========================= */
+
+        .search-bar {
+
+            width: 100%;
+
+            display: flex;
+
+            background: white;
+
+            border: 1px solid #222;
+
+            height: 58px;
+        }
+
+
+        .search-bar input {
+
+            flex: 1;
+
+            border: none;
+
+            outline: none;
+
+            padding: 0 20px;
+
+            font-size: 15px;
+
+            background: white;
+        }
+
+
+        .search-bar button {
+
+            width: 65px;
+
+            border: none;
+
+            background: rgb(32, 110, 198);
+
+            color: white;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+
+        .search-bar button:hover {
+
+            background: rgb(25, 90, 170);
+        }
+
+
+        /* =========================
+           QUICK SEARCH
+        ========================= */
+
+        .quick-title {
+
+            text-align: left;
+
+            margin-top: 30px;
+
+            margin-bottom: 12px;
+
+            color: rgb(32, 110, 198);
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        .quick-search {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .quick-search button {
+
+            padding: 10px 17px;
+
+            background: transparent;
+
+            border: 1px solid rgba(0,0,0,0.3);
+
+            color: #111;
+
+            cursor: pointer;
+
+            font-size: 13px;
+        }
+
+
+        .quick-search button:hover {
+
+            background: rgb(32, 110, 198);
+
+            color: white;
+
+            border-color: rgb(32, 110, 198);
+        }
+
+
+        /* =========================
+           SEARCH RESULT
+        ========================= */
+
+        #searchResult {
+
+            margin-top: 25px;
+
+            min-height: 25px;
+
+            color: rgb(32, 110, 198);
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-home {
+
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 12px 22px;
+
+            background: #111;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+
+        .back-home:hover {
+
+            background: rgb(32, 110, 198);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .search-box h1 {
+                font-size: 50px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: 75px;
+
+                padding: 0 4%;
+            }
+
+
+            .logo {
+                font-size: 20px;
+            }
+
+
+            .nav-actions a {
+                padding: 8px 12px;
+            }
+
+
+            .search-section {
+                width: 92%;
+            }
+
+
+            .search-box h1 {
+                font-size: 42px;
+            }
+
+
+            .search-box p {
+                font-size: 14px;
+            }
+
+
+            .search-bar {
+                height: 52px;
+            }
+
+
+            .search-bar input {
+                padding: 0 12px;
+
+                font-size: 13px;
+            }
+
+
+            .search-bar button {
+                width: 55px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+
+        <div class="logo">
+
+            ELECTRO<span>MART</span>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Categories
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="deals.html">
+                Deals
+            </a>
+
+        </div>
+
+
+        <div class="nav-actions">
+
+            <a href="search.html">
+                Search
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+        </div>
+
+
+    </nav>
+
+
+
+    <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <section class="search-section">
+
+
+        <div class="search-box">
+
+
+            <div class="small-heading">
+
+                EXPLORE ELECTROMART
+
+            </div>
+
+
+            <h1>
+
+                Find your
+                <span>technology.</span>
+
+            </h1>
+
+
+            <p>
+
+                Search smartphones, laptops, TVs, audio devices
+                and everything you need in one place.
+
+            </p>
+
+
+
+            <!-- SEARCH BAR -->
+
+            <div class="search-bar">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="What are you looking for?"
+                    onkeydown="searchOnEnter(event)"
+                >
+
+
+                <button onclick="performSearch()">
+
+                    🔍
+
+                </button>
+
+            </div>
+
+
+
+            <!-- QUICK SEARCH -->
+
+            <div class="quick-title">
+
+                QUICK SEARCH
+
+            </div>
+
+
+            <div class="quick-search">
+
+
+                <button onclick="quickSearch('Smartphones')">
+                    Smartphones
+                </button>
+
+
+                <button onclick="quickSearch('Laptops')">
+                    Laptops
+                </button>
+
+
+                <button onclick="quickSearch('Accessories')">
+                    Accessories
+                </button>
+
+
+                <button onclick="quickSearch('Audio')">
+                    Audio
+                </button>
+
+
+                <button onclick="quickSearch('Cameras')">
+                    Cameras
+                </button>
+
+
+                <button onclick="quickSearch('Wearables')">
+                    Wearables
+                </button>
+
+
+            </div>
+
+
+
+            <!-- RESULT -->
+
+            <div id="searchResult"></div>
+
+
+
+            <!-- BACK -->
+
+            <a href="index.html" class="back-home">
+
+                ← Back to Home
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+/* SEARCH */
+
+function performSearch() {
+
+    let input = document
+        .getElementById("searchInput")
+        .value
+        .trim();
+
+    let result = document
+        .getElementById("searchResult");
+
+    if (input === "") {
+
+        result.innerText =
+            "Please enter a product or category.";
+
+        return;
+
+    }
+
+    // Open products page and send search text
+    window.location.href =
+        "products.html?search=" + encodeURIComponent(input);
+
+}
+
+
+/* ENTER KEY */
+
+function searchOnEnter(event) {
+
+    if (event.key === "Enter") {
+
+        performSearch();
+
+    }
+
+}
+
+
+/* QUICK SEARCH */
+
+function quickSearch(category) {
+
+    document.getElementById("searchInput").value =
+        category;
+
+    // Directly open products page
+    window.location.href =
+        "products.html?search=" + encodeURIComponent(category);
+
+}
+
+</script>
+
+
+</body>
+
+</html>

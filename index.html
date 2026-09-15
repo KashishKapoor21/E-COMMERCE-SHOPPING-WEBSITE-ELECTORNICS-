@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElectroMart | Premium Electronics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+
+    <a href="#" class="logo">
+      ELECTRO<span>MART</span>
+    </a>
+
+    <nav>
+      <a href="#categories">Categories</a>
+      <a href="products.html">Products</a>
+      <a href="#deals">Deals</a>
+    </nav>
+
+    <div class="nav-actions">
+
+    <a href="search.html" class="search-btn">
+      Search
+    </a>
+
+    <a href="cart.html" class="cart-btn">
+        Cart
+    </a>
+
+</div>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-left">
+
+        <div class="eyebrow">
+          PREMIUM ELECTRONICS
+        </div>
+
+        <h1>
+          Technology
+          <br>
+          <span>worth having</span>
+        </h1>
+
+        <p>
+          Discover smartphones, laptops, TVs, audio and smart devices
+          built for the way you live, work and play.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="products.html" class="primary-button">
+            Shop Products
+          </a>
+
+          <a href="categories.html" class="secondary-button">
+            View Categories
+          </a>
+
+        </div>
+
+        <div class="hero-details">
+
+          <div>
+            <strong>500+</strong>
+            <small>Products</small>
+          </div>
+
+          <div>
+            <strong>50K+</strong>
+            <small>Happy Customers</small>
+          </div>
+
+          <div>
+            <strong>4.8/5</strong>
+            <small>Customer Rating</small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-right">
+
+        <div class="hero-background-circle"></div>
+
+        <div class="hero-product-showcase">
+
+          <img src="phone.jpeg" alt="Smartphones" class="hero-product-image active">
+          <img src="laptop.jpeg" alt="Laptops" class="hero-product-image">
+          <img src="tv.jpeg" alt="Televisions" class="hero-product-image">
+          <img src="headphones.jpeg" alt="Audio" class="hero-product-image">
+          <img src="camera.jpeg" alt="Cameras" class="hero-product-image">
+          <img src="smartWatch.jpeg" alt="Wearables" class="hero-product-image">
+
+        </div>
+
+        <div class="hero-label">
+          <small>FEATURED CATEGORY</small>
+          <strong id="hero-category">Smartphones</strong>
+        </div>
+
+        <div class="hero-indicators">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section id="categories" class="section categories">
+
+      <div class="section-top">
+
+        <div>
+          <span class="section-label">CATEGORIES</span>
+          <h2>Find what you need.</h2>
+        </div>
+
+        <p>
+          From everyday essentials to the latest innovations.
+        </p>
+
+      </div>
+
+
+      <div class="category-grid">
+
+        <div class="category-card">
+          <span class="category-number">01</span>
+          <div class="category-symbol">01</div>
+          <h3>Smartphones</h3>
+          <p>Latest mobile technology</p>
+          <span class="category-arrow">→</span>
+        </div>
+
+        <div class="category-card">
+          <span class="category-number">02</span>
+          <div class="category-symbol">02</div>
+          <h3>Laptops</h3>
+          <p>Power for work and play</p>
+          <span class="category-arrow">→</span>
+        </div>
+
+        <div class="category-card">
+          <span class="category-number">03</span>
+          <div class="category-symbol">03</div>
+          <h3>Audio</h3>
+          <p>Immersive sound experience</p>
+          <span class="category-arrow">→</span>
+        </div>
+
+        <div class="category-card">
+          <span class="category-number">04</span>
+          <div class="category-symbol">04</div>
+          <h3>Wearables</h3>
+          <p>Technology on the move</p>
+          <span class="category-arrow">→</span>
+        </div>
+
+        <div class="category-card">
+          <span class="category-number">05</span>
+          <div class="category-symbol">05</div>
+          <h3>Cameras</h3>
+          <p>Capture every moment</p>
+          <span class="category-arrow">→</span>
+        </div>
+
+        <div class="category-card">
+          <span class="category-number">06</span>
+          <div class="category-symbol">06</div>
+          <h3>Accessories</h3>
+          <p>Complete your setup</p>
+          <span class="category-arrow">→</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FEATURED PRODUCTS -->
+    <section id="featured" class="section products">
+
+      <div class="section-top">
+
+        <div>
+          <span class="section-label">FEATURED</span>
+          <h2>Trending products.</h2>
+        </div>
+
+        <a href="products.html" class="view-link">
+          View all products →
+        </a>
+
+      </div>
+
+
+      <div class="product-grid">
+
+        <div class="product-card">
+
+          <div class="product-image">
+            <span class="product-badge">POPULAR</span>
+            <img src="phone.jpeg" alt="iPhone 15 Pro">
+          </div>
+
+          <div class="product-content">
+            <span>Smartphones</span>
+            <h3>iPhone 15 Pro</h3>
+
+            <div class="product-footer">
+              <strong>₹1,29,999</strong>
+              <button onclick="addToCart('iPhone 15 Pro')">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+          <div class="product-image">
+            <span class="product-badge">NEW</span>
+            <img src="laptop.jpeg" alt="MacBook Air M3">
+          </div>
+
+          <div class="product-content">
+            <span>Laptops</span>
+            <h3>MacBook Air M3</h3>
+
+            <div class="product-footer">
+              <strong>₹1,14,900</strong>
+              <button onclick="addToCart('MacBook Air M3')">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+          <div class="product-image">
+            <span class="product-badge">BEST SELLER</span>
+            <img src="headphones.jpeg" alt="Sony WH-1000XM5">
+          </div>
+
+          <div class="product-content">
+            <span>Headphones</span>
+            <h3>Sony WH-1000XM5</h3>
+
+            <div class="product-footer">
+              <strong>₹29,990</strong>
+              <button onclick="addToCart('Sony WH-1000XM5')">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+          <div class="product-image">
+            <span class="product-badge">NEW</span>
+            <img src="smartWatch.jpeg" alt="Apple Watch Series 10">
+          </div>
+
+          <div class="product-content">
+            <span>Smartwatches</span>
+            <h3>Apple Watch Series 10</h3>
+
+            <div class="product-footer">
+              <strong>₹46,900</strong>
+              <button onclick="addToCart('Apple Watch Series 10')">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DEAL -->
+    <section id="deals" class="deal">
+
+      <div class="deal-content">
+
+        <span class="section-label">SPECIAL OFFER</span>
+
+        <h2>
+          Upgrade your
+          <br>
+          setup for less.
+        </h2>
+
+        <p>
+          Save up to 40% on selected electronics
+          for a limited time.
+        </p>
+
+        
+
+      </div>
+
+      <div class="deal-discount">
+        <small>UP TO</small>
+        <strong>40%</strong>
+        <span>OFF</span>
+      </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="services">
+
+      <div>
+        <strong>01</strong>
+        <h3>Fast Delivery</h3>
+        <p>Quick and reliable shipping.</p>
+      </div>
+
+      <div>
+        <strong>02</strong>
+        <h3>Secure Payments</h3>
+        <p>Safe and protected checkout.</p>
+      </div>
+
+      <div>
+        <strong>03</strong>
+        <h3>Easy Returns</h3>
+        <p>Simple return process.</p>
+      </div>
+
+      <div>
+        <strong>04</strong>
+        <h3>Customer Support</h3>
+        <p>Help whenever you need it.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <div>
+      <a href="#" class="logo">
+        ELECTRO<span>MART</span>
+      </a>
+
+      <p>
+        Modern technology. Better everyday living.
+      </p>
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>SHOP</h4>
+
+      <a href="categories.html">Categories</a>
+      <a href="products.html">Products</a>
+      <a href="deals.html">Deals</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>COMPANY</h4>
+
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Support</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>ACCOUNT</h4>
+
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+      <a href="#">Cart</a>
+
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+
+</body>
+</html>

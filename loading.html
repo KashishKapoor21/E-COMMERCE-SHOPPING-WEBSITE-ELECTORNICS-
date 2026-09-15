@@ -1,0 +1,879 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ElectroMart | Loading</title>
+
+
+    <!-- ================================
+         CSS
+         ================================ -->
+
+    <style>
+
+        /* ================================
+           RESET
+           ================================ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    rgba(60, 100, 255, 0.18),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #050817,
+                    #09112b,
+                    #050817
+                );
+
+            color: white;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+
+        /* ================================
+           DIGITAL GRID BACKGROUND
+           ================================ */
+
+        body::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(100, 130, 255, 0.045) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(100, 130, 255, 0.045) 1px,
+                    transparent 1px
+                );
+
+            background-size: 50px 50px;
+
+            pointer-events: none;
+        }
+
+
+        /* ================================
+           GLOWING SLIDING LINE
+           ================================ */
+
+        .scan-line {
+
+            position: absolute;
+
+            top: -120px;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 120px;
+
+            background:
+
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(80, 130, 255, 0.05),
+                    rgba(100, 160, 255, 0.35),
+                    rgba(120, 180, 255, 0.75),
+                    rgba(100, 160, 255, 0.2),
+                    transparent
+                );
+
+            filter: blur(2px);
+
+            box-shadow:
+
+                0 0 25px
+                rgba(80, 140, 255, 0.5),
+
+                0 0 60px
+                rgba(80, 120, 255, 0.25);
+
+            animation:
+                scanDown 3s linear infinite;
+
+            z-index: 2;
+
+            pointer-events: none;
+        }
+
+
+        /* Bright edge of the line */
+
+        .scan-line::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: 20px;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 2px;
+
+            background:
+                rgba(130, 190, 255, 0.9);
+
+            box-shadow:
+
+                0 0 8px
+                rgba(100, 170, 255, 0.9),
+
+                0 0 25px
+                rgba(70, 130, 255, 0.7),
+
+                0 0 50px
+                rgba(70, 120, 255, 0.4);
+        }
+
+
+        @keyframes scanDown {
+
+            0% {
+
+                transform:
+                    translateY(-10vh);
+
+                opacity: 0;
+            }
+
+
+            10% {
+
+                opacity: 1;
+            }
+
+
+            50% {
+
+                opacity: 1;
+            }
+
+
+            90% {
+
+                opacity: 1;
+            }
+
+
+            100% {
+
+                transform:
+                    translateY(110vh);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* ================================
+           DECORATIVE CIRCLES
+           ================================ */
+
+        .glow-circle {
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(100, 150, 255, 0.12);
+
+            box-shadow:
+
+                inset 0 0 30px
+                rgba(80, 120, 255, 0.05),
+
+                0 0 30px
+                rgba(80, 120, 255, 0.05);
+
+            pointer-events: none;
+        }
+
+
+        .circle-1 {
+
+            width: 500px;
+
+            height: 500px;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+        }
+
+
+        .circle-2 {
+
+            width: 700px;
+
+            height: 700px;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+        }
+
+
+        .circle-3 {
+
+            width: 900px;
+
+            height: 900px;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+        }
+
+
+        /* ================================
+           MAIN LOADING CONTAINER
+           ================================ */
+
+        .loading-container {
+
+            width: min(600px, 88%);
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            text-align: center;
+
+            z-index: 5;
+        }
+
+
+        /* ================================
+           LOGO
+           ================================ */
+
+        .logo {
+
+            font-family:
+                "Trebuchet MS",
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(40px, 7vw, 70px);
+
+            font-weight: 800;
+
+            letter-spacing: 5px;
+
+            color: white;
+
+            text-shadow:
+
+                0 0 10px
+                rgba(100, 150, 255, 0.35),
+
+                0 0 30px
+                rgba(70, 120, 255, 0.25);
+
+            animation:
+                logoGlow 2s ease-in-out
+                infinite alternate;
+        }
+
+
+        .logo span {
+
+            color: #7ea7ff;
+
+            text-shadow:
+
+                0 0 10px
+                rgba(100, 150, 255, 0.8),
+
+                0 0 25px
+                rgba(80, 130, 255, 0.5);
+        }
+
+
+        @keyframes logoGlow {
+
+            from {
+
+                text-shadow:
+                    0 0 10px
+                    rgba(100, 150, 255, 0.25);
+            }
+
+
+            to {
+
+                text-shadow:
+
+                    0 0 15px
+                    rgba(100, 150, 255, 0.5),
+
+                    0 0 35px
+                    rgba(70, 120, 255, 0.25);
+            }
+        }
+
+
+        /* ================================
+           TAGLINE
+           ================================ */
+
+        .tagline {
+
+            margin-top: 12px;
+
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+            color:
+                rgba(190, 205, 255, 0.7);
+
+            font-weight: 600;
+        }
+
+
+        /* ================================
+           LOADER
+           ================================ */
+
+        .loader-wrapper {
+
+            margin-top: 55px;
+
+            width: 100%;
+        }
+
+
+        .loader-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 10px;
+
+            font-family:
+                monospace;
+
+            font-size: 11px;
+
+            letter-spacing: 1.5px;
+
+            color:
+                rgba(210, 220, 255, 0.8);
+        }
+
+
+        #loading-percent {
+
+            color: #8db2ff;
+
+            font-weight: 700;
+
+            min-width: 40px;
+
+            text-align: right;
+        }
+
+
+        /* ================================
+           LOADING BAR
+           ================================ */
+
+        .loader-bar {
+
+            width: 100%;
+
+            height: 6px;
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            border:
+                1px solid
+                rgba(130, 160, 255, 0.18);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+
+                inset 0 0 10px
+                rgba(0, 0, 0, 0.4),
+
+                0 0 10px
+                rgba(70, 120, 255, 0.08);
+        }
+
+
+        .loader-progress {
+
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #527eff,
+                    #8eb5ff,
+                    #527eff
+                );
+
+            box-shadow:
+
+                0 0 8px
+                rgba(100, 150, 255, 0.9),
+
+                0 0 20px
+                rgba(70, 120, 255, 0.6);
+
+            transition:
+                width 0.03s linear;
+        }
+
+
+        /* ================================
+           SYSTEM TEXT
+           ================================ */
+
+        .system-text {
+
+            margin-top: 25px;
+
+            font-family:
+                monospace;
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            color:
+                rgba(170, 190, 255, 0.45);
+
+            animation:
+                blink 1.2s ease-in-out
+                infinite;
+        }
+
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.35;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+
+        /* ================================
+           MOBILE
+           ================================ */
+
+        @media (max-width: 600px) {
+
+            .logo {
+
+                font-size: 38px;
+
+                letter-spacing: 3px;
+            }
+
+
+            .tagline {
+
+                font-size: 9px;
+
+                letter-spacing: 3px;
+            }
+
+
+            .loader-wrapper {
+
+                margin-top: 40px;
+            }
+
+
+            .circle-1 {
+
+                width: 350px;
+
+                height: 350px;
+            }
+
+
+            .circle-2 {
+
+                width: 500px;
+
+                height: 500px;
+            }
+
+
+            .circle-3 {
+
+                width: 650px;
+
+                height: 650px;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .logo {
+
+                font-size: 30px;
+            }
+
+
+            .tagline {
+
+                font-size: 8px;
+
+                letter-spacing: 2px;
+            }
+
+
+            .loader-top {
+
+                font-size: 9px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         SLIDING GLOW LINE
+         ================================ -->
+
+    <div class="scan-line"></div>
+
+
+    <!-- ================================
+         DECORATIVE BACKGROUND
+         ================================ -->
+
+    <div class="glow-circle circle-1"></div>
+
+    <div class="glow-circle circle-2"></div>
+
+    <div class="glow-circle circle-3"></div>
+
+
+    <!-- ================================
+         LOADING CONTENT
+         ================================ -->
+
+    <main class="loading-container">
+
+
+        <div class="logo">
+
+            ELECTRO<span>MART</span>
+
+        </div>
+
+
+        <p class="tagline">
+
+            PREMIUM ELECTRONICS
+
+        </p>
+
+
+        <div class="loader-wrapper">
+
+
+            <div class="loader-top">
+
+                <span id="loading-status">
+
+                    INITIALIZING SYSTEM...
+
+                </span>
+
+
+                <span id="loading-percent">
+
+                    0%
+
+                </span>
+
+            </div>
+
+
+            <div class="loader-bar">
+
+                <div
+                    class="loader-progress"
+                ></div>
+
+            </div>
+
+
+        </div>
+
+
+        <p class="system-text">
+
+            SYSTEM BOOTING
+
+        </p>
+
+
+    </main>
+
+
+
+    <!-- ================================
+         JAVASCRIPT
+         ================================ -->
+
+    <script>
+
+        const progressBar =
+            document.querySelector(
+                ".loader-progress"
+            );
+
+
+        const percentage =
+            document.getElementById(
+                "loading-percent"
+            );
+
+
+        const statusText =
+            document.getElementById(
+                "loading-status"
+            );
+
+
+        const messages = [
+
+            "INITIALIZING SYSTEM...",
+
+            "LOADING ELECTROMART...",
+
+            "CONNECTING DEVICES...",
+
+            "PREPARING INTERFACE...",
+
+            "SYSTEM READY..."
+
+        ];
+
+
+        let progress = 0;
+
+
+        /*
+         * Total loading time:
+         * 3000 milliseconds = 3 seconds
+         */
+
+        const totalTime = 3000;
+
+
+        const intervalTime = 30;
+
+
+        const increment =
+            100 /
+            (totalTime / intervalTime);
+
+
+        let messageIndex = 0;
+
+
+        const loadingInterval =
+            setInterval(function () {
+
+
+                progress += increment;
+
+
+                if (progress >= 100) {
+
+                    progress = 100;
+
+                }
+
+
+                /* Update progress bar */
+
+                progressBar.style.width =
+                    progress + "%";
+
+
+                /* Update percentage */
+
+                percentage.textContent =
+                    Math.floor(progress) + "%";
+
+
+                /* Update messages */
+
+                if (
+                    progress >= 20 &&
+                    messageIndex === 0
+                ) {
+
+                    messageIndex = 1;
+
+                    statusText.textContent =
+                        messages[1];
+                }
+
+
+                if (
+                    progress >= 40 &&
+                    messageIndex === 1
+                ) {
+
+                    messageIndex = 2;
+
+                    statusText.textContent =
+                        messages[2];
+                }
+
+
+                if (
+                    progress >= 65 &&
+                    messageIndex === 2
+                ) {
+
+                    messageIndex = 3;
+
+                    statusText.textContent =
+                        messages[3];
+                }
+
+
+                if (
+                    progress >= 90 &&
+                    messageIndex === 3
+                ) {
+
+                    messageIndex = 4;
+
+                    statusText.textContent =
+                        messages[4];
+                }
+
+
+                /* ==========================
+                   LOADING FINISHED
+                   ========================== */
+
+                if (progress >= 100) {
+
+                    clearInterval(
+                        loadingInterval
+                    );
+
+
+                    /*
+                     * Small delay after
+                     * reaching 100%
+                     */
+
+                    setTimeout(function () {
+
+                        window.location.href =
+                            "index.html";
+
+                    }, 200);
+
+                }
+
+            }, intervalTime);
+
+    </script>
+
+
+</body>
+
+</html>

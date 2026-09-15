@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ElectroMart | Cart</title>
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #dfe5ff;
+            color: #111111;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 86px;
+            padding: 0 6%;
+            background: rgb(32, 110, 198);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-top: 3px solid #333333;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: white;
+        }
+
+        .logo span {
+            color: #071b70;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 42px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.75;
+        }
+
+
+        /* SEARCH + CART */
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-actions button,
+        .cart-btn {
+            height: 42px;
+            padding: 0 20px;
+
+            border: 1px solid rgba(255,255,255,0.65);
+
+            background: transparent;
+            color: white;
+
+            font-family: inherit;
+            font-size: 14px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-actions button:hover,
+        .cart-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+
+        /* =========================
+           CART HERO
+        ========================= */
+
+        .cart-hero {
+            width: 86%;
+            margin: auto;
+
+            padding: 80px 0 45px;
+        }
+
+        .small-title {
+            color: rgb(32, 110, 198);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .cart-hero h1 {
+            font-size: 64px;
+            line-height: 0.95;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .cart-hero h1 span {
+            color: rgb(32, 110, 198);
+        }
+
+        .cart-hero p {
+            max-width: 580px;
+            font-size: 17px;
+            line-height: 1.6;
+            color: #444444;
+        }
+
+
+        /* =========================
+           MAIN CART
+        ========================= */
+
+        .cart-container {
+            width: 86%;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+
+            gap: 35px;
+
+            padding-bottom: 70px;
+        }
+
+
+        /* =========================
+           CART PRODUCTS
+        ========================= */
+
+        .cart-box {
+            background: rgba(255,255,255,0.45);
+
+            border: 1px solid rgba(0,0,0,0.2);
+
+            padding: 28px;
+        }
+
+        .cart-box-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid rgba(0,0,0,0.18);
+        }
+
+        .cart-box-title h2 {
+            font-size: 24px;
+        }
+
+        .item-count {
+            color: #555555;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           PRODUCT
+        ========================= */
+
+        .cart-item {
+            display: grid;
+
+            grid-template-columns: 75px 1fr 140px;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 18px 0;
+
+            border-bottom: 1px solid #d5dbea;
+
+            min-height: 100px;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+
+        /* PRODUCT IMAGE */
+
+        .product-image {
+            width: 75px;
+            height: 75px;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* PRODUCT INFO */
+
+        .product-info h3 {
+            margin: 0 0 5px;
+
+            font-size: 19px;
+        }
+
+        .product-info p {
+            margin: 0 0 7px;
+
+            font-size: 13px;
+
+            color: #666;
+        }
+
+        .product-info .price {
+            font-size: 17px;
+
+            font-weight: 700;
+
+            color: #2874d0;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           QUANTITY
+        ========================= */
+
+        .quantity-area {
+            display: flex;
+
+            align-items: center;
+
+            gap: 0;
+
+            margin-bottom: 5px;
+        }
+
+        .quantity-area button {
+            width: 36px;
+            height: 36px;
+
+            border: 1px solid #aeb8ca;
+
+            background: transparent;
+
+            font-size: 18px;
+
+            cursor: pointer;
+        }
+
+        .quantity-area button:hover {
+            background: rgba(32,110,198,0.1);
+        }
+
+        .quantity {
+            width: 38px;
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-top: 1px solid #aeb8ca;
+            border-bottom: 1px solid #aeb8ca;
+        }
+
+
+        /* =========================
+           REMOVE
+        ========================= */
+
+        .remove-btn {
+            border: none;
+
+            background: none;
+
+            padding: 0;
+
+            font-size: 13px;
+
+            color: #666;
+
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            color: rgb(32, 110, 198);
+        }
+
+
+        /* =========================
+           ITEM TOTAL
+        ========================= */
+
+        .item-total {
+            text-align: right;
+
+            font-size: 17px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           SUMMARY
+        ========================= */
+
+        .summary {
+            background: #111111;
+
+            color: white;
+
+            padding: 30px;
+
+            height: fit-content;
+
+            position: relative;
+        }
+
+        .summary::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background: rgb(32, 110, 198);
+        }
+
+        .summary h2 {
+            font-size: 27px;
+
+            margin-bottom: 30px;
+        }
+
+        .summary-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+
+            color: #dddddd;
+
+            font-size: 15px;
+        }
+
+        .summary-row.total {
+            border-top: 1px solid #444444;
+
+            padding-top: 22px;
+
+            margin-top: 25px;
+
+            color: white;
+
+            font-size: 23px;
+
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            width: 100%;
+
+            padding: 15px;
+
+            margin-top: 25px;
+
+            background: rgb(32, 110, 198);
+
+            color: white;
+
+            border: none;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .checkout-btn:hover {
+            background: rgb(25, 94, 175);
+        }
+
+        .continue-btn {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 16px;
+
+            padding: 13px;
+
+            border: 1px solid #777777;
+
+            color: white;
+
+            font-size: 14px;
+        }
+
+        .continue-btn:hover {
+            border-color: white;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            width: 86%;
+
+            margin: 0 auto 80px;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .feature {
+            background: rgba(255,255,255,0.35);
+
+            border: 1px solid rgba(0,0,0,0.15);
+
+            padding: 25px;
+        }
+
+        .feature-number {
+            color: rgb(32, 110, 198);
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+        .feature h3 {
+            font-size: 17px;
+
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #555555;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           EMPTY CART
+        ========================= */
+
+        .empty-cart {
+            text-align: center;
+
+            padding: 60px 20px;
+        }
+
+        .empty-cart h2 {
+            font-size: 28px;
+
+            margin-bottom: 12px;
+        }
+
+        .empty-cart p {
+            color: #555555;
+
+            margin-bottom: 25px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+
+            background: #111111;
+
+            color: white;
+
+            padding: 13px 25px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: rgb(32, 110, 198);
+
+            color: white;
+
+            padding: 30px 6%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        footer .footer-logo {
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+        footer p {
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-hero h1 {
+                font-size: 50px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: 75px;
+
+                padding: 0 4%;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .nav-actions {
+                gap: 6px;
+            }
+
+            .nav-actions button,
+            .cart-btn {
+                height: 38px;
+
+                padding: 0 12px;
+
+                font-size: 13px;
+            }
+
+            .cart-hero {
+                width: 92%;
+
+                padding-top: 55px;
+            }
+
+            .cart-hero h1 {
+                font-size: 43px;
+            }
+
+            .cart-container {
+                width: 92%;
+            }
+
+            .cart-box {
+                padding: 20px;
+            }
+
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+
+                gap: 15px;
+            }
+
+            .product-image {
+                width: 80px;
+
+                height: 80px;
+            }
+
+            .item-total {
+                grid-column: 2;
+
+                text-align: left;
+
+                font-size: 17px;
+            }
+
+            .features {
+                width: 92%;
+            }
+
+            footer {
+                flex-direction: column;
+
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ELECTRO<span>MART</span>
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Categories
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+        </div>
+
+
+        <div class="nav-actions">
+
+            <button onclick="searchMessage()">
+                Search
+            </button>
+
+            <a href="cart.html" class="cart-btn">
+                Cart
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="cart-hero">
+
+        <div class="small-title">
+            YOUR SHOPPING SPACE
+        </div>
+
+        <h1>
+            Your <span>Cart.</span>
+        </h1>
+
+        <p>
+            Review your selected electronics and get everything
+            ready for your next upgrade.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         MAIN CART
+    ========================= -->
+
+    <main class="cart-container">
+
+
+        <!-- CART PRODUCTS -->
+
+        <section class="cart-box">
+
+            <div class="cart-box-title">
+
+                <h2>
+                    Shopping Cart
+                </h2>
+
+                <span class="item-count" id="itemCount">
+                    0 Items
+                </span>
+
+            </div>
+
+
+            <!-- PRODUCTS WILL APPEAR HERE -->
+
+            <div id="cartItems"></div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ORDER SUMMARY
+        ========================= -->
+
+        <aside class="summary">
+
+            <h2>
+                Order Summary
+            </h2>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span id="subtotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span>
+                    FREE
+                </span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Tax
+                </span>
+
+                <span id="tax">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="summary-row total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="grandTotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <button
+                class="checkout-btn"
+                onclick="checkout()">
+
+                Proceed to Checkout
+
+            </button>
+
+
+            <a
+                href="products.html"
+                class="continue-btn">
+
+                Continue Shopping
+
+            </a>
+
+        </aside>
+
+    </main>
+
+
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
+
+    <section class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                01
+            </div>
+
+            <h3>
+                Free Delivery
+            </h3>
+
+            <p>
+                Get free delivery on your electronics
+                order with no extra charges.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                02
+            </div>
+
+            <h3>
+                Secure Shopping
+            </h3>
+
+            <p>
+                Your shopping experience is designed
+                to be simple and secure.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                03
+            </div>
+
+            <h3>
+                Easy Returns
+            </h3>
+
+            <p>
+                Simple support and hassle-free assistance
+                whenever you need it.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            ELECTROMART
+        </div>
+
+        <p>
+            © 2026 ElectroMart. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           GET CART FROM LOCAL STORAGE
+        ========================= */
+
+        let cart =
+            JSON.parse(localStorage.getItem("electroMartCart")) || [];
+
+
+
+        /* =========================
+           CHANGE QUANTITY
+        ========================= */
+
+        function changeQuantity(index, change) {
+
+            cart[index].quantity += change;
+
+
+            if (cart[index].quantity <= 0) {
+
+                cart.splice(index, 1);
+
+            }
+
+
+            localStorage.setItem(
+                "electroMartCart",
+                JSON.stringify(cart)
+            );
+
+
+            updateCart();
+
+        }
+
+
+
+        /* =========================
+           REMOVE PRODUCT
+        ========================= */
+
+        function removeItem(index) {
+
+            cart.splice(index, 1);
+
+
+            localStorage.setItem(
+                "electroMartCart",
+                JSON.stringify(cart)
+            );
+
+
+            updateCart();
+
+        }
+
+
+
+        /* =========================
+           UPDATE CART
+        ========================= */
+
+        function updateCart() {
+
+            const cartItems =
+                document.getElementById("cartItems");
+
+
+            cartItems.innerHTML = "";
+
+
+            /* EMPTY CART */
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+
+                    <div class="empty-cart">
+
+                        <h2>
+                            Your cart is empty
+                        </h2>
+
+                        <p>
+                            Add some products from the Products page.
+                        </p>
+
+                        <a
+                            href="products.html"
+                            class="shop-btn">
+
+                            Shop Products
+
+                        </a>
+
+                    </div>
+
+                `;
+
+
+                document.getElementById("subtotal").innerText =
+                    "₹0";
+
+                document.getElementById("tax").innerText =
+                    "₹0";
+
+                document.getElementById("grandTotal").innerText =
+                    "₹0";
+
+                document.getElementById("itemCount").innerText =
+                    "0 Items";
+
+                return;
+
+            }
+
+
+
+            /* =========================
+               DISPLAY PRODUCTS
+            ========================= */
+
+            let subtotal = 0;
+
+
+            cart.forEach(function(item, index) {
+
+                subtotal +=
+                    item.price * item.quantity;
+
+
+                cartItems.innerHTML += `
+
+                    <div class="cart-item">
+
+
+                        <div class="product-image">
+
+                            <img
+                                src="${item.image}"
+                                alt="${item.name}"
+                            >
+
+                        </div>
+
+
+                        <div class="product-info">
+
+                            <h3>
+                                ${item.name}
+                            </h3>
+
+                            <p>
+                                Selected electronics product
+                            </p>
+
+                            <div class="price">
+                                ₹${item.price.toLocaleString("en-IN")}
+                            </div>
+
+
+                            <div class="quantity-area">
+
+
+                                <button
+                                    onclick="changeQuantity(${index}, -1)">
+
+                                    −
+
+                                </button>
+
+
+                                <span class="quantity">
+
+                                    ${item.quantity}
+
+                                </span>
+
+
+                                <button
+                                    onclick="changeQuantity(${index}, 1)">
+
+                                    +
+
+                                </button>
+
+
+                            </div>
+
+
+                            <button
+                                class="remove-btn"
+                                onclick="removeItem(${index})">
+
+                                Remove item
+
+                            </button>
+
+
+                        </div>
+
+
+                        <div class="item-total">
+
+                            <strong>
+
+                                ₹${(
+                                    item.price *
+                                    item.quantity
+                                ).toLocaleString("en-IN")}
+
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+            });
+
+
+
+            /* =========================
+               SUMMARY
+            ========================= */
+
+            const tax =
+                subtotal * 0.18;
+
+
+            const grandTotal =
+                subtotal + tax;
+
+
+            document.getElementById("subtotal").innerText =
+                "₹" +
+                subtotal.toLocaleString("en-IN");
+
+
+            document.getElementById("tax").innerText =
+                "₹" +
+                Math.round(tax).toLocaleString("en-IN");
+
+
+            document.getElementById("grandTotal").innerText =
+                "₹" +
+                Math.round(grandTotal).toLocaleString("en-IN");
+
+
+
+            /* =========================
+               ITEM COUNT
+            ========================= */
+
+            const totalItems =
+                cart.reduce(function(total, item) {
+
+                    return total + item.quantity;
+
+                }, 0);
+
+
+            document.getElementById("itemCount").innerText =
+
+                totalItems +
+                (totalItems === 1
+                    ? " Item"
+                    : " Items");
+
+
+
+            /* SAVE CART */
+
+            localStorage.setItem(
+                "electroMartCart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+
+        /* =========================
+           CHECKOUT
+        ========================= */
+
+        function checkout() {
+
+            if (cart.length === 0) {
+
+                alert("Your cart is empty!");
+
+                return;
+
+            }
+
+
+            alert("Checkout feature coming soon!");
+
+        }
+
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        function searchMessage() {
+
+            alert("Search feature coming soon!");
+
+        }
+
+
+
+        /* =========================
+           LOAD CART
+        ========================= */
+
+        updateCart();
+
+    </script>
+
+
+</body>
+
+</html>
