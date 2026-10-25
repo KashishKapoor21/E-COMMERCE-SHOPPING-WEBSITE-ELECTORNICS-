@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElectroMart | Buy Now</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #dfe5ff;
+      color: #111;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      cursor: pointer;
+    }
+
+    .navbar {
+      min-height: 76px;
+      padding: 16px 6%;
+      background: rgb(32, 110, 198);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #071b70;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      font-size: 14px;
+    }
+
+    .page-heading {
+      width: 88%;
+      margin: 55px auto 30px;
+    }
+
+    .eyebrow {
+      color: rgb(32, 110, 198);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .page-heading h1 {
+      font-size: clamp(34px, 5vw, 55px);
+      letter-spacing: -2px;
+    }
+
+    .page-heading p {
+      color: #555;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    .checkout-layout {
+      width: 88%;
+      margin: 0 auto 70px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(0,0,0,0.16);
+      padding: 28px;
+      min-width: 0;
+    }
+
+    .panel h2 {
+      font-size: 24px;
+      margin-bottom: 22px;
+    }
+
+    .product-row {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr);
+      gap: 18px;
+      padding: 20px 0;
+      border-top: 1px solid #cbd3e6;
+    }
+
+    .product-row img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      background: white;
+      border-radius: 8px;
+    }
+
+    .product-row h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .product-row p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 9px;
+    }
+
+    .price {
+      color: rgb(32, 110, 198);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quantity-controls button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #aeb8ca;
+      background: transparent;
+      font-size: 18px;
+    }
+
+    .summary {
+      background: #111;
+      color: white;
+      padding: 30px;
+      border-top: 4px solid rgb(32, 110, 198);
+    }
+
+    .summary h2 {
+      font-size: 26px;
+      margin-bottom: 28px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 20px 0;
+      color: #ddd;
+    }
+
+    .summary-row span:last-child {
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .grand-total {
+      border-top: 1px solid #444;
+      padding-top: 22px;
+      margin-top: 25px;
+      color: white;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .form-section {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #cbd3e6;
+    }
+
+    .form-section h2 {
+      margin-bottom: 18px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #aeb8ca;
+      background: white;
+      color: #111;
+      border-radius: 0;
+    }
+
+    .field textarea {
+      min-height: 85px;
+      resize: vertical;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      border: 1px solid #111;
+    }
+
+    .primary-btn {
+      background: rgb(32, 110, 198);
+      color: white;
+      border-color: rgb(32, 110, 198);
+      margin-top: 24px;
+    }
+
+    .primary-btn:hover {
+      background: rgb(25, 94, 175);
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: white;
+      border-color: #777;
+      margin-top: 14px;
+    }
+
+    .secondary-btn:hover {
+      border-color: white;
+    }
+
+    .empty-message {
+      padding: 20px 0;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .notice {
+      margin-top: 15px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #bbb;
+    }
+
+    footer {
+      background: rgb(32, 110, 198);
+      color: white;
+      padding: 25px 6%;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .checkout-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .page-heading,
+      .checkout-layout {
+        width: 92%;
+      }
+
+      .panel,
+      .summary {
+        padding: 20px;
+      }
+
+      .product-row {
+        grid-template-columns: 75px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .product-row img {
+        width: 75px;
+        height: 75px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">ELECTRO<span>MART</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </nav>
+
+  <header class="page-heading">
+    <div class="eyebrow">YOUR ORDER</div>
+    <h1>Buy Now / Checkout</h1>
+    <p>Review your products, confirm your details and review your order total.</p>
+  </header>
+
+  <main class="checkout-layout">
+    <section class="panel">
+      <h2>Product Details</h2>
+      <div id="productList"></div>
+
+      <div class="form-section">
+        <h2>Delivery Details</h2>
+
+        <form id="checkoutForm">
+          <div class="field">
+            <label for="customerName">Full name</label>
+            <input id="customerName" name="customerName"
+              autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel"
+              autocomplete="tel" required>
+          </div>
+
+          <div class="field">
+            <label for="address">Delivery address</label>
+            <textarea id="address" name="address"
+              autocomplete="street-address" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="city">City and PIN code</label>
+            <input id="city" name="city"
+              autocomplete="shipping address-level2" required>
+          </div>
+
+          <button class="primary-btn" type="submit">
+            Place Order
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <aside class="summary">
+      <h2>Order Summary</h2>
+
+      <div class="summary-row">
+        <span>Items</span>
+        <span id="itemCount">0</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="subtotal">₹0</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Delivery</span>
+        <span>FREE</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Tax (18%)</span>
+        <span id="tax">₹0</span>
+      </div>
+
+      <div class="summary-row grand-total">
+        <span>Total</span>
+        <span id="grandTotal">₹0</span>
+      </div>
+
+      <a href="products.html" class="secondary-btn">
+        Continue Shopping
+      </a>
+
+      <p class="notice">
+        Demo checkout only. No payment is processed by this page.
+      </p>
+    </aside>
+  </main>
+
+  <footer>
+    ElectroMart — Modern technology. Better everyday living.
+  </footer>
+
+  <script>
+    const money = amount =>
+      "₹" + Math.round(amount).toLocaleString("en-IN");
+
+    const params = new URLSearchParams(window.location.search);
+    const isCartCheckout = params.get("source") === "cart";
+
+    let items = [];
+
+    if (isCartCheckout) {
+      items = JSON.parse(
+        localStorage.getItem("electroMartCart") || "[]"
+      );
+    } else {
+      const selected = JSON.parse(
+        localStorage.getItem("electroMartBuyNow") || "null"
+      );
+
+      if (selected) {
+        items = [{
+          ...selected,
+          quantity: Math.max(1, Number(selected.quantity) || 1)
+        }];
+      }
+    }
+
+    const list = document.getElementById("productList");
+    const form = document.getElementById("checkoutForm");
+
+    function renderOrder() {
+      list.innerHTML = "";
+
+      if (!items.length) {
+        list.innerHTML = `
+          <div class="empty-message">
+            <p>No product was selected.</p>
+            <p>Go back to the Products page or add products to your cart.</p>
+            <a href="products.html">Browse products →</a>
+          </div>
+        `;
+
+        form.querySelector("button").disabled = true;
+        form.querySelector("button").style.opacity = "0.5";
+        updateSummary();
+        return;
+      }
+
+      form.querySelector("button").disabled = false;
+      form.querySelector("button").style.opacity = "1";
+
+      items.forEach((item, index) => {
+        const row = document.createElement("div");
+        row.className = "product-row";
+
+        const img = document.createElement("img");
+        img.src = item.image || "";
+        img.alt = item.name || "Product";
+
+        const info = document.createElement("div");
+
+        const title = document.createElement("h3");
+        title.textContent = item.name;
+
+        const description = document.createElement("p");
+        description.textContent = "Selected electronics product";
+
+        const price = document.createElement("div");
+        price.className = "price";
+        price.textContent = money(item.price);
+
+        const controls = document.createElement("div");
+        controls.className = "quantity-controls";
+
+        const minus = document.createElement("button");
+        minus.type = "button";
+        minus.textContent = "−";
+        minus.setAttribute("aria-label", "Decrease quantity");
+        minus.onclick = () => changeQuantity(index, -1);
+
+        const quantity = document.createElement("span");
+        quantity.textContent = item.quantity;
+
+        const plus = document.createElement("button");
+        plus.type = "button";
+        plus.textContent = "+";
+        plus.setAttribute("aria-label", "Increase quantity");
+        plus.onclick = () => changeQuantity(index, 1);
+
+        controls.append(minus, quantity, plus);
+        info.append(title, description, price, controls);
+        row.append(img, info);
+        list.appendChild(row);
+      });
+
+      updateSummary();
+    }
+
+    function changeQuantity(index, change) {
+      if (!items[index]) return;
+
+      items[index].quantity += change;
+
+      if (items[index].quantity < 1) {
+        items.splice(index, 1);
+      }
+
+      if (isCartCheckout) {
+        localStorage.setItem(
+          "electroMartCart",
+          JSON.stringify(items)
+        );
+      } else if (items[0]) {
+        localStorage.setItem(
+          "electroMartBuyNow",
+          JSON.stringify(items[0])
+        );
+      } else {
+        localStorage.removeItem("electroMartBuyNow");
+      }
+
+      renderOrder();
+    }
+
+    function updateSummary() {
+      const subtotal = items.reduce(
+        (sum, item) =>
+          sum + Number(item.price) * Number(item.quantity),
+        0
+      );
+
+      const count = items.reduce(
+        (sum, item) => sum + Number(item.quantity),
+        0
+      );
+
+      const tax = Math.round(subtotal * 0.18);
+
+      document.getElementById("itemCount").textContent = count;
+      document.getElementById("subtotal").textContent = money(subtotal);
+      document.getElementById("tax").textContent = money(tax);
+      document.getElementById("grandTotal").textContent =
+        money(subtotal + tax);
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (!items.length) {
+        alert("Please select a product first.");
+        return;
+      }
+
+      const customerName =
+        document.getElementById("customerName").value.trim();
+
+      if (!customerName) {
+        alert("Please enter your name.");
+        return;
+      }
+
+      alert(
+        `Order placed successfully! Thank you, ${customerName}. Your order will be processed soon.`
+      );
+
+      // This is a front-end demo, not a real order-processing system.
+    });
+
+    renderOrder();
+  </script>
+</body>
+</html>

@@ -1239,20 +1239,16 @@
            CHECKOUT
         ========================= */
 
-        function checkout() {
+        
+function checkout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
 
-            if (cart.length === 0) {
+    window.location.href = "buynow.html?source=cart";
+}
 
-                alert("Your cart is empty!");
-
-                return;
-
-            }
-
-
-            alert("Checkout feature coming soon!");
-
-        }
 
 
 

@@ -998,8 +998,7 @@
               Full-frame mirrorless camera for
               photography and video.
             </p>
-
-            <div class="product-info">
+   <div class="product-info">
 
               <strong>
                 ₹1,89,990
@@ -2053,7 +2052,7 @@
         <div class="specifications">
 
           <h3>Specifications</h3>
-
+          
           <div class="spec-row">
             <span>Display</span>
             <strong>15.6-inch FHD+ 1920×1200, 60Hz</strong>
@@ -3802,6 +3801,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
-</body>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const buyButtons = document.querySelectorAll(
+    ".product-modal .buy-button"
+  );
+
+  buyButtons.forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const modal = button.closest(".product-modal");
+
+      if (!modal) return;
+
+      const name = modal.querySelector(
+        ".modal-details h2"
+      ).innerText.trim();
+
+      const priceText = modal.querySelector(
+        ".modal-price"
+      ).innerText;
+
+      const price = Number(
+        priceText.replace(/[^\d]/g, "")
+      );
+
+      const image = modal.querySelector(
+        ".modal-image img"
+      ).getAttribute("src");
+
+      const product = {
+        name: name,
+        price: price,
+        image: image,
+        quantity: 1
+      };
+
+      localStorage.setItem(
+        "electroMartBuyNow",
+        JSON.stringify(product)
+      );
+
+      window.location.href = "buynow.html";
+    });
+  });
+});
+</script>
+</body>
 </html>

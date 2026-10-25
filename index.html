@@ -5,14 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ElectroMart | Premium Electronics</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="home-popup.css">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .category-card {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .category-card:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
+
+    .category-card h3 {
+      color: inherit;
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- NAVBAR -->
   <header class="navbar">
-
-    <a href="#" class="logo">
+    <a href="index.html" class="logo">
       ELECTRO<span>MART</span>
     </a>
 
@@ -23,30 +45,17 @@
     </nav>
 
     <div class="nav-actions">
-
-    <a href="search.html" class="search-btn">
-      Search
-    </a>
-
-    <a href="cart.html" class="cart-btn">
-        Cart
-    </a>
-
-</div>
-
+      <a href="search.html" class="search-btn">Search</a>
+      <a href="cart.html" class="cart-btn">Cart</a>
+    </div>
   </header>
-
 
   <main>
 
     <!-- HERO -->
     <section class="hero">
-
       <div class="hero-left">
-
-        <div class="eyebrow">
-          PREMIUM ELECTRONICS
-        </div>
+        <div class="eyebrow">PREMIUM ELECTRONICS</div>
 
         <h1>
           Technology
@@ -60,19 +69,16 @@
         </p>
 
         <div class="hero-actions">
-
           <a href="products.html" class="primary-button">
             Shop Products
           </a>
 
-          <a href="categories.html" class="secondary-button">
+          <a href="#categories" class="secondary-button">
             View Categories
           </a>
-
         </div>
 
         <div class="hero-details">
-
           <div>
             <strong>500+</strong>
             <small>Products</small>
@@ -87,25 +93,25 @@
             <strong>4.8/5</strong>
             <small>Customer Rating</small>
           </div>
-
         </div>
-
       </div>
 
-
       <div class="hero-right">
-
         <div class="hero-background-circle"></div>
 
         <div class="hero-product-showcase">
-
-          <img src="phone.jpeg" alt="Smartphones" class="hero-product-image active">
-          <img src="laptop.jpeg" alt="Laptops" class="hero-product-image">
-          <img src="tv.jpeg" alt="Televisions" class="hero-product-image">
-          <img src="headphones.jpeg" alt="Audio" class="hero-product-image">
-          <img src="camera.jpeg" alt="Cameras" class="hero-product-image">
-          <img src="smartWatch.jpeg" alt="Wearables" class="hero-product-image">
-
+          <img src="phone.jpeg" alt="Smartphones"
+               class="hero-product-image active">
+          <img src="laptop.jpeg" alt="Laptops"
+               class="hero-product-image">
+          <img src="tv.jpeg" alt="Televisions"
+               class="hero-product-image">
+          <img src="headphones.jpeg" alt="Audio"
+               class="hero-product-image">
+          <img src="camera.jpeg" alt="Cameras"
+               class="hero-product-image">
+          <img src="smartWatch.jpeg" alt="Wearables"
+               class="hero-product-image">
         </div>
 
         <div class="hero-label">
@@ -121,89 +127,94 @@
           <span></span>
           <span></span>
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- CATEGORIES -->
+    <!-- CATEGORIES: CONNECTED TO PRODUCTS PAGE -->
     <section id="categories" class="section categories">
-
       <div class="section-top">
-
         <div>
           <span class="section-label">CATEGORIES</span>
           <h2>Find what you need.</h2>
         </div>
 
-        <p>
-          From everyday essentials to the latest innovations.
-        </p>
-
+        <p>From everyday essentials to the latest innovations.</p>
       </div>
-
 
       <div class="category-grid">
 
-        <div class="category-card">
+        <!-- SMARTPHONES -->
+        <a href="products.html#smartphones"
+           class="category-card"
+           aria-label="Browse Smartphones">
           <span class="category-number">01</span>
           <div class="category-symbol">01</div>
           <h3>Smartphones</h3>
           <p>Latest mobile technology</p>
           <span class="category-arrow">→</span>
-        </div>
+        </a>
 
-        <div class="category-card">
+        <!-- LAPTOPS -->
+        <a href="products.html#laptops"
+           class="category-card"
+           aria-label="Browse Laptops">
           <span class="category-number">02</span>
           <div class="category-symbol">02</div>
           <h3>Laptops</h3>
           <p>Power for work and play</p>
           <span class="category-arrow">→</span>
-        </div>
+        </a>
 
-        <div class="category-card">
+        <!-- AUDIO -->
+        <a href="products.html#audio"
+           class="category-card"
+           aria-label="Browse Audio">
           <span class="category-number">03</span>
           <div class="category-symbol">03</div>
           <h3>Audio</h3>
           <p>Immersive sound experience</p>
           <span class="category-arrow">→</span>
-        </div>
+        </a>
 
-        <div class="category-card">
+        <!-- WEARABLES -->
+        <a href="products.html#wearables"
+           class="category-card"
+           aria-label="Browse Wearables">
           <span class="category-number">04</span>
           <div class="category-symbol">04</div>
           <h3>Wearables</h3>
           <p>Technology on the move</p>
           <span class="category-arrow">→</span>
-        </div>
+        </a>
 
-        <div class="category-card">
+        <!-- CAMERAS -->
+        <a href="products.html#cameras"
+           class="category-card"
+           aria-label="Browse Cameras">
           <span class="category-number">05</span>
           <div class="category-symbol">05</div>
           <h3>Cameras</h3>
           <p>Capture every moment</p>
           <span class="category-arrow">→</span>
-        </div>
+        </a>
 
-        <div class="category-card">
+        <!-- ACCESSORIES -->
+        <a href="products.html#accessories"
+           class="category-card"
+           aria-label="Browse Accessories">
           <span class="category-number">06</span>
           <div class="category-symbol">06</div>
           <h3>Accessories</h3>
           <p>Complete your setup</p>
           <span class="category-arrow">→</span>
-        </div>
+        </a>
 
       </div>
-
     </section>
-
 
     <!-- FEATURED PRODUCTS -->
     <section id="featured" class="section products">
-
       <div class="section-top">
-
         <div>
           <span class="section-label">FEATURED</span>
           <h2>Trending products.</h2>
@@ -212,109 +223,104 @@
         <a href="products.html" class="view-link">
           View all products →
         </a>
-
       </div>
-
 
       <div class="product-grid">
 
+        <!-- IPHONE 15 PRO -->
         <div class="product-card">
-
-          <div class="product-image">
+          <a href="#home-iphone15"
+             class="product-image product-popup-link">
             <span class="product-badge">POPULAR</span>
             <img src="phone.jpeg" alt="iPhone 15 Pro">
-          </div>
+          </a>
 
           <div class="product-content">
             <span>Smartphones</span>
-            <h3>iPhone 15 Pro</h3>
+            <h3><a href="#home-iphone15">iPhone 15 Pro</a></h3>
 
             <div class="product-footer">
               <strong>₹1,29,999</strong>
-              <button onclick="addToCart('iPhone 15 Pro')">
+              <button type="button"
+                onclick="addToCart('iPhone 15 Pro', this)">
                 Add to Cart
               </button>
             </div>
           </div>
-
         </div>
 
-
+        <!-- MACBOOK AIR M3 -->
         <div class="product-card">
-
-          <div class="product-image">
+          <a href="#home-macbook"
+             class="product-image product-popup-link">
             <span class="product-badge">NEW</span>
             <img src="laptop.jpeg" alt="MacBook Air M3">
-          </div>
+          </a>
 
           <div class="product-content">
             <span>Laptops</span>
-            <h3>MacBook Air M3</h3>
+            <h3><a href="#home-macbook">MacBook Air M3</a></h3>
 
             <div class="product-footer">
               <strong>₹1,14,900</strong>
-              <button onclick="addToCart('MacBook Air M3')">
+              <button type="button"
+                onclick="addToCart('MacBook Air M3', this)">
                 Add to Cart
               </button>
             </div>
           </div>
-
         </div>
 
-
+        <!-- SONY HEADPHONES -->
         <div class="product-card">
-
-          <div class="product-image">
+          <a href="#home-sony"
+             class="product-image product-popup-link">
             <span class="product-badge">BEST SELLER</span>
             <img src="headphones.jpeg" alt="Sony WH-1000XM5">
-          </div>
+          </a>
 
           <div class="product-content">
             <span>Headphones</span>
-            <h3>Sony WH-1000XM5</h3>
+            <h3><a href="#home-sony">Sony WH-1000XM5</a></h3>
 
             <div class="product-footer">
               <strong>₹29,990</strong>
-              <button onclick="addToCart('Sony WH-1000XM5')">
+              <button type="button"
+                onclick="addToCart('Sony WH-1000XM5', this)">
                 Add to Cart
               </button>
             </div>
           </div>
-
         </div>
 
-
+        <!-- APPLE WATCH -->
         <div class="product-card">
-
-          <div class="product-image">
+          <a href="#home-watch"
+             class="product-image product-popup-link">
             <span class="product-badge">NEW</span>
             <img src="smartWatch.jpeg" alt="Apple Watch Series 10">
-          </div>
+          </a>
 
           <div class="product-content">
             <span>Smartwatches</span>
-            <h3>Apple Watch Series 10</h3>
+            <h3><a href="#home-watch">Apple Watch Series 10</a></h3>
 
             <div class="product-footer">
               <strong>₹46,900</strong>
-              <button onclick="addToCart('Apple Watch Series 10')">
+              <button type="button"
+                onclick="addToCart('Apple Watch Series 10', this)">
                 Add to Cart
               </button>
             </div>
           </div>
-
         </div>
 
       </div>
-
     </section>
-
 
     <!-- DEAL -->
     <section id="deals" class="deal">
-
       <div class="deal-content">
-
         <span class="section-label">SPECIAL OFFER</span>
 
         <h2>
@@ -327,9 +333,6 @@
           Save up to 40% on selected electronics
           for a limited time.
         </p>
-
-        
-
       </div>
 
       <div class="deal-discount">
@@ -337,13 +340,10 @@
         <strong>40%</strong>
         <span>OFF</span>
       </div>
-
     </section>
-
 
     <!-- SERVICES -->
     <section class="services">
-
       <div>
         <strong>01</strong>
         <h3>Fast Delivery</h3>
@@ -367,60 +367,419 @@
         <h3>Customer Support</h3>
         <p>Help whenever you need it.</p>
       </div>
-
     </section>
 
   </main>
 
-
   <!-- FOOTER -->
   <footer class="footer">
-
     <div>
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         ELECTRO<span>MART</span>
       </a>
-
-      <p>
-        Modern technology. Better everyday living.
-      </p>
+      <p>Modern technology. Better everyday living.</p>
     </div>
 
-
     <div class="footer-column">
-
       <h4>SHOP</h4>
-
-      <a href="categories.html">Categories</a>
+      <a href="products.html#categories">Categories</a>
       <a href="products.html">Products</a>
-      <a href="deals.html">Deals</a>
-
+      <a href="index.html#deals">Deals</a>
     </div>
 
-
     <div class="footer-column">
-
       <h4>COMPANY</h4>
-
       <a href="#">About</a>
       <a href="#">Contact</a>
       <a href="#">Support</a>
-
     </div>
-
 
     <div class="footer-column">
-
       <h4>ACCOUNT</h4>
-
-      <a href="#">Login</a>
-      <a href="#">Register</a>
-      <a href="#">Cart</a>
-
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="cart.html">Cart</a>
     </div>
   </footer>
-  
+
+  <!-- WEBSITE SCRIPT -->
   <script src="script.js"></script>
+
+  <!-- ADD TO CART FUNCTION -->
+  <script>
+    window.addToCart = function (name, button) {
+      const products = {
+        "iPhone 15 Pro": {
+          price: 129999,
+          image: "phone.jpeg"
+        },
+        "MacBook Air M3": {
+          price: 114900,
+          image: "laptop.jpeg"
+        },
+        "Sony WH-1000XM5": {
+          price: 29990,
+          image: "headphones.jpeg"
+        },
+        "Apple Watch Series 10": {
+          price: 46900,
+          image: "smartWatch.jpeg"
+        }
+      };
+
+      const product = products[name];
+
+      if (!product) {
+        alert("Product details nahi mile: " + name);
+        return;
+      }
+
+      let cart = [];
+
+      try {
+        cart = JSON.parse(
+          localStorage.getItem("electroMartCart")
+        ) || [];
+
+        if (!Array.isArray(cart)) {
+          cart = [];
+        }
+      } catch (error) {
+        cart = [];
+      }
+
+      const existingProduct = cart.find(function (item) {
+        return item.name === name;
+      });
+
+      if (existingProduct) {
+        existingProduct.quantity =
+          Number(existingProduct.quantity || 0) + 1;
+      } else {
+        cart.push({
+          name: name,
+          price: product.price,
+          image: product.image,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem(
+        "electroMartCart",
+        JSON.stringify(cart)
+      );
+
+      if (button) {
+        const originalText = button.innerText;
+        button.innerText = "Added ✓";
+        button.disabled = true;
+
+        setTimeout(function () {
+          button.innerText = originalText;
+          button.disabled = false;
+        }, 1200);
+      }
+    };
+  </script>
+  
+  <!-- BUY NOW FUNCTION -->
+  <script>
+    window.buyNowHome = function (name) {
+      const products = {
+        "iPhone 15 Pro": {
+          price: 129999,
+          image: "phone.jpeg"
+        },
+        "MacBook Air M3": {
+          price: 114900,
+          image: "laptop.jpeg"
+        },
+        "Sony WH-1000XM5": {
+          price: 29990,
+          image: "headphones.jpeg"
+        },
+        "Apple Watch Series 10": {
+          price: 46900,
+          image: "smartWatch.jpeg"
+        }
+      };
+
+      const product = products[name];
+
+      if (!product) {
+        alert("Product details not found: " + name);
+        return;
+      }
+
+      localStorage.setItem(
+        "electroMartBuyNow",
+        JSON.stringify({
+          name: name,
+          price: product.price,
+          image: product.image,
+          quantity: 1
+        })
+      );
+
+      window.location.href = "buynow.html";
+    };
+  </script>
+
+
+  <!-- IPHONE 15 PRO POPUP -->
+  <div id="home-iphone15" class="home-product-modal">
+    <a href="#featured" class="home-modal-background"
+       aria-label="Close popup"></a>
+
+    <div class="home-modal-content">
+      <a href="#featured" class="home-modal-close"
+         aria-label="Close popup">×</a>
+
+      <div class="home-modal-image">
+        <img src="phone.jpeg" alt="iPhone 15 Pro">
+      </div>
+
+      <div class="home-modal-details">
+        <span class="home-modal-category">SMARTPHONES / APPLE</span>
+        <h2>iPhone 15 Pro</h2>
+
+        <div class="home-modal-rating">
+          ★★★★★ <span>4.9 / 5 · 2,481 reviews</span>
+        </div>
+
+        <p class="home-modal-description">
+          Premium titanium design, powerful performance
+          and an advanced professional camera system.
+        </p>
+
+        <div class="home-modal-price">₹1,29,999</div>
+        <div class="home-modal-stock">● IN STOCK — READY TO SHIP</div>
+
+        <div class="home-specifications">
+          <h3>Specifications</h3>
+          <div class="home-spec-row">
+            <span>Display</span>
+            <strong>6.1-inch Super Retina XDR</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Processor</span>
+            <strong>A17 Pro</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Storage</span>
+            <strong>256 GB</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Material</span>
+            <strong>Titanium</strong>
+          </div>
+        </div>
+
+        <div class="home-modal-actions">
+          <button type="button"
+            onclick="addToCart('iPhone 15 Pro', this)">
+            Add to Cart
+          </button>
+          <button type="button"
+            onclick="buyNowHome('iPhone 15 Pro')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MACBOOK AIR M3 POPUP -->
+  <div id="home-macbook" class="home-product-modal">
+    <a href="#featured" class="home-modal-background"
+       aria-label="Close popup"></a>
+
+    <div class="home-modal-content">
+      <a href="#featured" class="home-modal-close"
+         aria-label="Close popup">×</a>
+
+      <div class="home-modal-image">
+        <img src="laptop.jpeg" alt="MacBook Air M3">
+      </div>
+
+      <div class="home-modal-details">
+        <span class="home-modal-category">LAPTOPS / APPLE</span>
+        <h2>MacBook Air M3</h2>
+
+        <div class="home-modal-rating">
+          ★★★★★ <span>4.8 / 5 · Customer favourite</span>
+        </div>
+
+        <p class="home-modal-description">
+          Lightweight design with Apple M3 performance,
+          a vivid display and all-day battery life
+          for work and study.
+        </p>
+
+        <div class="home-modal-price">₹1,14,900</div>
+        <div class="home-modal-stock">● IN STOCK — READY TO SHIP</div>
+
+        <div class="home-specifications">
+          <h3>Specifications</h3>
+          <div class="home-spec-row">
+            <span>Chip</span>
+            <strong>Apple M3</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Display</span>
+            <strong>13.6-inch Liquid Retina</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Memory</span>
+            <strong>8 GB unified memory</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Storage</span>
+            <strong>256 GB SSD</strong>
+          </div>
+        </div>
+
+        <div class="home-modal-actions">
+          <button type="button"
+            onclick="addToCart('MacBook Air M3', this)">
+            Add to Cart
+          </button>
+          <button type="button"
+            onclick="buyNowHome('MacBook Air M3')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SONY WH-1000XM5 POPUP -->
+  <div id="home-sony" class="home-product-modal">
+    <a href="#featured" class="home-modal-background"
+       aria-label="Close popup"></a>
+
+    <div class="home-modal-content">
+      <a href="#featured" class="home-modal-close"
+         aria-label="Close popup">×</a>
+
+      <div class="home-modal-image">
+        <img src="headphones.jpeg" alt="Sony WH-1000XM5">
+      </div>
+
+      <div class="home-modal-details">
+        <span class="home-modal-category">AUDIO / SONY</span>
+        <h2>Sony WH-1000XM5</h2>
+
+        <div class="home-modal-rating">
+          ★★★★★ <span>4.8 / 5 · Best seller</span>
+        </div>
+
+        <p class="home-modal-description">
+          Enjoy immersive listening with premium noise
+          cancellation, clear calls and a comfortable
+          lightweight design.
+        </p>
+
+        <div class="home-modal-price">₹29,990</div>
+        <div class="home-modal-stock">● IN STOCK — READY TO SHIP</div>
+
+        <div class="home-specifications">
+          <h3>Specifications</h3>
+          <div class="home-spec-row">
+            <span>Type</span>
+            <strong>Wireless over-ear</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Noise control</span>
+            <strong>Active Noise Cancelling</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Connectivity</span>
+            <strong>Bluetooth</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Battery</span>
+            <strong>Up to 30 hours</strong>
+          </div>
+        </div>
+
+        <div class="home-modal-actions">
+          <button type="button"
+            onclick="addToCart('Sony WH-1000XM5', this)">
+            Add to Cart
+          </button>
+          <button type="button"
+            onclick="buyNowHome('Sony WH-1000XM5')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLE WATCH SERIES 10 POPUP -->
+  <div id="home-watch" class="home-product-modal">
+    <a href="#featured" class="home-modal-background"
+       aria-label="Close popup"></a>
+
+    <div class="home-modal-content">
+      <a href="#featured" class="home-modal-close"
+         aria-label="Close popup">×</a>
+
+      <div class="home-modal-image">
+        <img src="smartWatch.jpeg" alt="Apple Watch Series 10">
+      </div>
+
+      <div class="home-modal-details">
+        <span class="home-modal-category">WEARABLES / APPLE</span>
+        <h2>Apple Watch Series 10</h2>
+
+        <div class="home-modal-rating">
+          ★★★★★ <span>4.8 / 5 · Featured wearable</span>
+        </div>
+
+        <p class="home-modal-description">
+          Track your activity, stay connected and check
+          useful fitness insights with a sleek,
+          comfortable smartwatch.
+        </p>
+
+        <div class="home-modal-price">₹46,900</div>
+        <div class="home-modal-stock">● IN STOCK — READY TO SHIP</div>
+
+        <div class="home-specifications">
+          <h3>Specifications</h3>
+          <div class="home-spec-row">
+            <span>Display</span>
+            <strong>Always-On Retina</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Connectivity</span>
+            <strong>Bluetooth / Wi-Fi</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Fitness</span>
+            <strong>Activity and workout tracking</strong>
+          </div>
+          <div class="home-spec-row">
+            <span>Compatibility</span>
+            <strong>iPhone</strong>
+          </div>
+        </div>
+
+        <div class="home-modal-actions">
+          <button type="button"
+            onclick="addToCart('Apple Watch Series 10', this)">
+            Add to Cart
+          </button>
+          <button type="button"
+            onclick="buyNowHome('Apple Watch Series 10')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

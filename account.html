@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | ElectroMart</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f5f6f8;
+            color: #252525;
+            min-height: 100vh;
+        }
+
+        header {
+            background: white;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            color: #222;
+            font-size: 25px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #3737a5;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #444;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #3737a5;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 55px auto;
+            padding: 0 22px;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+        }
+
+        .heading small {
+            color: #3737a5;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .heading h1 {
+            font-size: 35px;
+            margin: 12px 0;
+        }
+
+        .heading p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .account-card {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px #00000008;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 25px;
+        }
+
+        .avatar {
+            width: 75px;
+            height: 75px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #ededff;
+            color: #3737a5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .profile h2 {
+            margin-bottom: 7px;
+        }
+
+        .profile p {
+            color: #777;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .detail {
+            padding: 20px;
+            background: #f7f7fa;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .detail small {
+            display: block;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .detail strong {
+            font-size: 15px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .primary {
+            background: #3737a5;
+            color: white;
+        }
+
+        .secondary {
+            background: #ededff;
+            color: #3737a5;
+        }
+
+        .logout {
+            background: #fff0f0;
+            color: #c0392b;
+        }
+
+        footer {
+            background: #35363b;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            margin-top: 70px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                gap: 14px;
+            }
+
+            .heading h1 {
+                font-size: 28px;
+            }
+
+            .account-card {
+                padding: 22px;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">
+        ELECTRO<span>MART</span>
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<main>
+
+    <section class="heading">
+        <small>MY ACCOUNT</small>
+
+        <h1>
+            Welcome, <span id="welcomeName">Customer</span>!
+        </h1>
+
+        <p>Your personal space at ElectroMart.</p>
+    </section>
+
+    <section class="account-card">
+
+        <div class="profile">
+            <div class="avatar" id="avatar">C</div>
+
+            <div>
+                <h2 id="profileName">Customer</h2>
+                <p id="profileEmail">customer@example.com</p>
+            </div>
+        </div>
+
+        <h3>Personal Information</h3>
+
+        <div class="details">
+
+            <div class="detail">
+                <small>Full Name</small>
+                <strong id="fullName">Not available</strong>
+            </div>
+
+            <div class="detail">
+                <small>Email Address</small>
+                <strong id="emailAddress">Not available</strong>
+            </div>
+
+            <div class="detail">
+                <small>Phone Number</small>
+                <strong id="phoneNumber">Not available</strong>
+            </div>
+
+            <div class="detail">
+                <small>Account Status</small>
+                <strong style="color: green;">Logged In</strong>
+            </div>
+
+        </div>
+
+        <div class="actions">
+
+            <a href="products.html" class="btn primary">
+                Shop Products
+            </a>
+
+            <a href="cart.html" class="btn secondary">
+                View Cart
+            </a>
+
+            <button class="btn logout" id="logoutBtn">
+                Logout
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 ElectroMart. All rights reserved.
+</footer>
+
+<script>
+    const user = JSON.parse(
+        localStorage.getItem("electromartUser") || "null"
+    );
+
+    const loggedIn =
+        localStorage.getItem("electromartLoggedIn") === "true";
+
+    if (!user || !loggedIn) {
+        window.location.replace("login.html");
+    } else {
+        document.getElementById("welcomeName").textContent = user.name;
+        document.getElementById("profileName").textContent = user.name;
+        document.getElementById("profileEmail").textContent = user.email;
+        document.getElementById("fullName").textContent = user.name;
+        document.getElementById("emailAddress").textContent = user.email;
+
+        document.getElementById("phoneNumber").textContent =
+            user.phone || "Not provided";
+
+        document.getElementById("avatar").textContent =
+            user.name.charAt(0).toUpperCase();
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+        localStorage.removeItem("electromartLoggedIn");
+
+        window.location.href = "login.html";
+    });
+</script>
+
+</body>
+</html>
